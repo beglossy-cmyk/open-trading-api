@@ -1,5 +1,6 @@
 import time
 from datetime import datetime
+import pytz
 from typing import Optional
 
 from samsung_auto_trader import config
@@ -63,7 +64,7 @@ class SimpleSamsungTrader:
         )
 
         while True:
-            now = datetime.now()
+            now = datetime.now(pytz.timezone("Asia/Seoul"))
             if now.time() >= config.TRADING_END:
                 logger.info("Trading window ended at %s. Stopping trader.", now.time())
                 break

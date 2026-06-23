@@ -20,6 +20,8 @@ class ApiClient:
             "Authorization": f"Bearer {token}",
             "Content-Type": "application/json",
             "Accept": "application/json",
+            "appkey": config.GH_APPKEY,
+            "appsecret": config.GH_APPSECRET,
         }
 
     def _request(self, method: str, path: str, params: dict[str, Any] | None = None, json_body: dict[str, Any] | None = None) -> Any:

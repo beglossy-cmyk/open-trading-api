@@ -59,7 +59,7 @@ def get_bearer_token() -> str:
 
     appkey, appsecret, _account = _validate_credentials()
     token_url = f"{config.BASE_API_URL}{config.TOKEN_ENDPOINT}"
-    headers = {"Content-Type": "application/x-www-form-urlencoded"}
+    headers = {"Content-Type": "application/json"}
     data = {
         "grant_type": "client_credentials",
         "appkey": appkey,
@@ -70,7 +70,7 @@ def get_bearer_token() -> str:
         response = requests.post(
             token_url,
             headers=headers,
-            data=data,
+            json=data,
             timeout=config.API_TIMEOUT_SECONDS,
         )
         response.raise_for_status()
