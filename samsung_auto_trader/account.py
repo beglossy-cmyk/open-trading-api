@@ -43,7 +43,7 @@ class AccountService:
         if isinstance(output2, list) and output2:
             item = output2[0]
             available_cash = int(item.get("dnca_tot_amt", 0) or 0)
-            total_asset = int(item.get("tot_evlu_amt", 0) or 0)
+            total_asset = round(float(item.get("tot_evlu_amt", 0) or 0))
 
         output1 = raw.get("output1")
         if isinstance(output1, list):

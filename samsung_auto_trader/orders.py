@@ -13,6 +13,7 @@ class OrderService:
         tr_id = "VTTC0802U" if side == "buy" else "VTTC0801U"
         self.client.headers["tr_id"] = tr_id
 
+        price = round(price / 500) * 500  # 500원 단위 맞추기
         order_payload = {
             "CANO": self.account_no,
             "ACNT_PRDT_CD": config.ACCOUNT_PRODUCT_CODE,
